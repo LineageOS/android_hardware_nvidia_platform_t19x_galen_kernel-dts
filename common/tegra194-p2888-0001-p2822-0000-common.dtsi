@@ -45,7 +45,7 @@
 			hardware = "jetson-xavier";
 			vbmeta {
 				compatible = "android,vbmeta";
-				parts = "vbmeta,kernel,kernel-dtb,APP,vendor,SOS";
+				parts = "vbmeta,boot,kernel-dtb,system,vendor,recovery";
 			};
 			fstab {
 				compatible = "android,fstab";
