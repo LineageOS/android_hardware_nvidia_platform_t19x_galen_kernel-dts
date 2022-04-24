@@ -47,10 +47,26 @@
 		android {
 			compatible = "android,firmware";
 			hardware = "galen";
-			boot_devices = "3460000.sdhci";
 			vbmeta {
 				compatible = "android,vbmeta";
-				parts = "vbmeta,boot,kernel-dtb,vbmeta_system,recovery";
+				parts = "vbmeta,boot,kernel-dtb,system,vendor,recovery";
+			};
+			fstab {
+				compatible = "android,fstab";
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/platform/3460000.sdhci/by-name/vendor";
+					type = "ext4";
+					mnt_flags = "ro";
+					fsmgr_flags = "wait,avb,slotselect";
+				};
+				odm {
+					compatible = "android,odm";
+					dev = "/dev/block/platform/3460000.sdhci/by-name/odm";
+					type = "ext4";
+					mnt_flags = "ro";
+					fsmgr_flags = "wait,avb,slotselect";
+				};
 			};
 		};
 	};
